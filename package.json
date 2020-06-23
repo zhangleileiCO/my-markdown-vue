@@ -1,0 +1,17 @@
+{
+  "name": "my-markdown-vue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vue": "^2.6.11",
+    "vue-loader": "^15.9.2",
+    "webpack": "^4.43.0"
+  }
+}
