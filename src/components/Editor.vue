@@ -7,6 +7,7 @@
 
 <script>
     import marked from 'marked'
+    import hljs from 'highlight.js'
     export default {
         name: "Editor",
         data: function(){
@@ -16,7 +17,9 @@
         },
         computed: {
             compiledMarkdown: function() {
-                return marked(this.input, { sanitize: true });
+                let markdown = marked(this.input, { sanitize: true })
+                //return hljs.highlightAuto(markdown).value;
+                return markdown
             }
         },
         methods: {
@@ -24,6 +27,11 @@
                 setTimeout(() => {
                     this.input = e.target.value;
                 }, 300)
+            },
+            highlightCode: function () {
+                let pres = document.querySelectorAll("pre>code");
+                for (let i = 0; i < pres.length; i++) {
+                }
             }
         }
     }
@@ -53,5 +61,14 @@
         font-size: 14px;
         font-family: "Monaco", courier, monospace;
         padding: 20px;
+    }
+    /*
+    不生效
+    html是动态赋值的，没有attribute
+    */
+    .right-el pre {
+        background-color: #2B2B2B;
+        padding: 10px;
+        color: white;
     }
 </style>
