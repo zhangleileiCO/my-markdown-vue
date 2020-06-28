@@ -1,5 +1,7 @@
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     mode: process.env.NODE_ENV,
@@ -11,8 +13,9 @@ module.exports = {
         filename: "[name][hash:7].js"
     },
     devServer: {
-        port: 8088,
-        publicPath: "/"
+        contentBase: path.join(process.cwd(), './example/dist'),
+        port: 8080,
+        publicPath: "/",
     },
     module: {
         rules: [
@@ -31,7 +34,11 @@ module.exports = {
             }
         ]
     },
-    plugins: [new VueLoaderPlugin()],
+    plugins: [new CleanWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            template: "./example/index.html"
+        }),
+        new VueLoaderPlugin()],
     resolve: {
         extensions: ['.vue', '.js', 'css']
     }
