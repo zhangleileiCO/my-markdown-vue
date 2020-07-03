@@ -2,3 +2,4 @@
 .idea
 /lib
 /example/dist
+/coverage
